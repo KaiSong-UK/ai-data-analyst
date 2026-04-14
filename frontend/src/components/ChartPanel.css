@@ -1,0 +1,49 @@
+.chart-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+}
+
+.chart-panel h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+th {
+  background: #1e293b;
+  color: #94a3b8;
+  padding: 8px 12px;
+  text-align: left;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+td {
+  padding: 7px 12px;
+  border-bottom: 1px solid #1e293b;
+  color: #e2e8f0;
+  white-space: nowrap;
+}
+
+tr:hover td {
+  background: #1e293b;
+}
+
+.table-note {
+  font-size: 11px;
+  color: #64748b;
+  text-align: center;
+  margin-top: 8px;
+}
