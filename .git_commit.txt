@@ -1,0 +1,13 @@
+feat: demo mode with rule-based SQL + e-commerce seed data
+
+- Add backend/seed_data.py: seeds 500 orders, 10 customers,
+  20 products, order_items on first startup
+- Add postgres-init.sql: creates tables before seed runs
+- Rewrite core/sql_generator.py: full rule-based SQL engine with
+  12+ patterns (revenue, top products, customers by region,
+  trends, comparisons, counts). Falls back to LLM when API key set.
+- Update api/routes/chat.py: generate natural language explanations
+- Update docker-compose.yml: PostgreSQL init volume, backend waits
+  for db healthcheck, seed on startup
+- Add backend/Dockerfile and frontend/Dockerfile (both missing)
+- Rewrite README: demo-first quick start
