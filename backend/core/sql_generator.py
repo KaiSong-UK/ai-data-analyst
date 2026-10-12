@@ -1,5 +1,3 @@
-import re
-from typing import Optional
 from .config import settings
 from .database import get_table_metadata
 
@@ -45,7 +43,7 @@ def _get_demo_schema() -> dict:
     }
 
 
-def _rule_based_sql(question: str, schema_desc: str, schema: str = "public") -> Optional[str]:
+def _rule_based_sql(question: str, schema_desc: str, schema: str = "public") -> str | None:
     """
     Map common question patterns to SQL without needing an LLM.
     Returns SQL string or None if no pattern matches.

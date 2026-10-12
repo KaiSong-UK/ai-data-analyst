@@ -3,8 +3,10 @@ AI Data Analyst - Demo seed data
 Creates e-commerce dataset: customers, products, orders, order_items
 """
 import random
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
+
 from sqlalchemy import text
+
 from core.database import get_db_session
 
 REGIONS = ["North", "South", "East", "West"]
@@ -62,7 +64,7 @@ def seed():
         # --- Customers ---
         for i, (name, email) in enumerate(CUSTOMER_NAMES, 1):
             days_ago = random.randint(30, 500)
-            signup = datetime.now(timezone.utc) - timedelta(days=days_ago)
+            signup = datetime.now(UTC) - timedelta(days=days_ago)
             tier = random.choice(TIERS)
             region = REGIONS[i % len(REGIONS)]
             db.execute(text("""
@@ -81,7 +83,7 @@ def seed():
         print(f"  {len(PRODUCTS_DATA)} products inserted")
 
         # --- Orders (500 orders over last 90 days) ---
-        now = datetime.now(timezone.utc)
+        now = datetime.now(UTC)
         order_ids = []
         for _ in range(500):
             days_ago = random.uniform(0, 90)
