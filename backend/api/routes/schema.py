@@ -1,6 +1,7 @@
 from fastapi import APIRouter
-from core.database import get_table_metadata
+
 from core.config import settings
+from core.database import get_table_metadata
 
 router = APIRouter(prefix="/api/schema", tags=["schema"])
 
