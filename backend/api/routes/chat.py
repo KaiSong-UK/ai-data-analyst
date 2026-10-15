@@ -1,9 +1,10 @@
-from fastapi import APIRouter, HTTPException, Body
+
+from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
-from typing import Optional
-from core.database import execute_readonly_query
-from core.sql_generator import generate_sql, build_schema_description, parse_chart_type
+
 from core.config import settings
+from core.database import execute_readonly_query
+from core.sql_generator import build_schema_description, generate_sql, parse_chart_type
 
 router = APIRouter(prefix="/api", tags=["chat"])
 
@@ -11,7 +12,7 @@ router = APIRouter(prefix="/api", tags=["chat"])
 class ChatRequest(BaseModel):
     question: str
     schema: str = "public"
-    model: Optional[str] = None
+    model: str | None = None
 
 
 class ChatResponse(BaseModel):
@@ -19,7 +20,7 @@ class ChatResponse(BaseModel):
     generated_sql: str
     chart_type: str
     data: dict
-    explanation: Optional[str] = None
+    explanation: str | None = None
 
 
 def _build_explanation(question: str, sql: str, chart_type: str, row_count: int) -> str:
