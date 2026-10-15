@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
 from api.routes import chat, schema
-from core.config import settings
 
 app = FastAPI(
     title="AI Data Analyst",
